@@ -1,21 +1,33 @@
+<div id="mainTable">
 <table>
 	<tr>
-	<td>
+	<td class="reviews">
 		<table id="great_andhra_reviews">
-			<tr><td><h3>Great Andhra Latest reviews</h3></td></tr>
+			<tr><td><h3>Great Andhra</h3></td></tr>
 			<% @ga_reviews.each do |l| %>
 				<tr><td><a href="<%= l['href']%>" target="_blank"><%= l['text']%></a></td></tr>
 			<% end %>
 		</table>
 	</td>
-	<td>
+	<td class="reviews">
 		<table id="idle_brain_reviews">
-			<tr><td><h3>Idlebrain Latest reviews</h3></td></tr>
+			<tr><td><h3>Idlebrain</h3></td></tr>
 			<% @ib_reviews.each do |link| %>
 				<tr><td><a href="<%= link['href']%>" target="_blank"><%= link['text']%></a></td></tr>
 			<% end %>
 		</table>
 	</td>
 	</tr>
+	<tr>
+	<td class="reviews">
+		<table id="gulte_reviews">
+			<tr><td><h3>Gulte.com</h3></td></tr>
+			<% @gt_reviews.each do |link| %>
+				<tr><td><a href="<%= link['href']%>" target="_blank"><%= link['text']%></a></td></tr>
+			<% end %>
+		</table>
+	</td>
+	<td></td>
+	</tr>
 </table>
-
+</div>

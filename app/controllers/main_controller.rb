@@ -31,6 +31,21 @@ class MainController < ApplicationController
       l_map['href'] = ib_base_url + link['href']
       l_map['text'] = link.text
       @ib_reviews << l_map
-    end  
+    end
+    
+    @gt_reviews = []
+    gt_url = "http://www.gulte.com/moviereviews"
+    gt_agent = Mechanize.new
+    gt_page = gt_agent.get(gt_url)
+    reviews_count = 0
+    gt_page.parser.css('html body div.wrapper div.container div.article div.listView a').each do |gtr|
+      break if reviews_count == 5
+      reviews_count += 1
+      l_map = {}
+      l_map['href'] = gtr['href']
+      l_map['text'] = gtr.text
+      @gt_reviews << l_map
+    end 
+    
   end
 end
