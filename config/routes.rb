@@ -4,6 +4,7 @@ Scrape::Application.routes.draw do
   root to: 'main#scrape'
   
   match '/scrape', to: 'main#scrape'
+  match '/contact', to: 'main#contact'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

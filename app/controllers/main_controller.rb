@@ -58,4 +58,8 @@ class MainController < ApplicationController
     threads.each(&:join)
     
   end
+  
+  def contact
+    
+  end
 end
