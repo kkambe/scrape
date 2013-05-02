@@ -1,6 +1,8 @@
 Scrape::Application.routes.draw do
   #get "main/scrape"
   
+  root to: 'main#scrape'
+  
   match '/scrape', to: 'main#scrape'
 
   # The priority is based upon order of creation:
