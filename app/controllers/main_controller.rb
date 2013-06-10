@@ -42,10 +42,12 @@ class MainController < ApplicationController
     threads << Thread.new do
       @gt_reviews = []
       gt_url = "http://www.gulte.com/moviereviews"
+      #gt_css_path = 'html body div.wrapper div.container div.article div.listView a'
+      gt_css_path = 'html body div.wrapper div.main div.container ul.list_more li a'
       gt_agent = Mechanize.new
       gt_page = gt_agent.get(gt_url)
       reviews_count = 0
-      gt_page.parser.css('html body div.wrapper div.container div.article div.listView a').each do |gtr|
+      gt_page.parser.css(gt_css_path).each do |gtr|
         break if reviews_count == 5
         reviews_count += 1
         l_map = {}
