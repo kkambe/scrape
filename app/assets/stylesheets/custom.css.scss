@@ -13,6 +13,8 @@ html {
 
 body {
   padding-top: 20px;
+  //background-color: #A9E2F3;
+  background-color: #CEECF5;
 }
 
 section {
@@ -51,6 +53,14 @@ h2 {
   text-align: center;
   font-weight: normal;
   color: $grayLight;
+}
+
+h3 {
+  font-size: 1.3em;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  font-weight: normal;
+  color: #000;
 }
 
 p {
@@ -112,14 +122,28 @@ footer {
   }
 }
 
-.nav {
-  a {
-    color: #0088CC !important;
-    text-shadow: 0 0 0 rgba(0, 0, 0, 0.25) !important;
-    &:hover { 
-      color: $grayDarker !important;
+.navbar-inner {
+  background: none;
+  filter: none;
+  border: none;
+  box-shadow: none;
+  
+  //background-color: #81DAF5;
+  
+  .nav {
+    a {
+      color: #000;
     }
+    
+    a:hover {
+      background-color: #2E64FE;
+    }    
   }
+  
 }
+
+
+
+
 
 
