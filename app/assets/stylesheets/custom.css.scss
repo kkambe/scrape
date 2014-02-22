@@ -14,7 +14,8 @@ html {
 body {
   padding-top: 20px;
   //background-color: #A9E2F3;
-  background-color: #CEECF5;
+  background-color: #fff;
+  font-size: 1em;
 }
 
 section {
@@ -106,11 +107,21 @@ footer {
     
     td {
       width: 50%;
+      padding: 3px;
     }
   }
   
   .reviews {
     padding: 15px;
+    
+    table caption {
+      float: left;
+      font-size: 1.3em;
+      //font-weight: bold;
+      margin: 10px 0;
+      //border-bottom: 1px solid;
+      color: hsla(344, 81%, 43%, 1);
+    }
   }  
 }
 
@@ -122,6 +133,7 @@ footer {
   }
 }
 
+/*
 .navbar-inner {
   background: none;
   filter: none;
@@ -141,7 +153,53 @@ footer {
   }
   
 }
+*/
 
+.navbar .nav.pull-right {
+    margin-right: 100px;
+}
+
+.navbar-inverse {
+  .nav-pills > li > a {
+    color: #fff;
+    margin-right: 13px;
+    margin-top: 9px;
+    border-radius: 10px;
+    //background-color: #0A3066;
+    color: #FFFFFF;
+    padding: 10px;
+  }
+  
+  .nav-pills > li > a:hover {
+    background-color: #0A3066;
+  }
+}
+
+#header {
+  background-color: hsla(200, 82%, 22%, 1);
+  height: 50px;
+}
+
+#logo {
+  float: left;
+  margin-right: 10px;
+  font-size: 1.6em;
+  color: #fff;
+  // color:  #020033;
+  //text-transform: uppercase;
+  letter-spacing: -1px;
+  padding: 15px;
+  font-weight: bold;
+  line-height: 1;
+}
+
+#logo:hover {
+  text-decoration: none;
+}
+
+#main-content {
+  margin-top: 30px;
+}
 
 
 

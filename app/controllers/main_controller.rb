@@ -15,8 +15,9 @@ class MainController < ApplicationController
       ga_page.parser.css('div.movies_page_news a').each do |l|
         break if reviews_count == 5
         reviews_count += 1
-        l_map = {}
-        l_map['href'] = ga_base_url + l['href']
+        l_map = {} 
+        # l_map['href'] = ga_base_url + l['href']
+        l_map['href'] = l['href']
         l_map['text'] = l.text
         @ga_reviews << l_map
       end  
