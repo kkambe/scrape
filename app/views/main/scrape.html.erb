@@ -1,4 +1,4 @@
-<div id="mainTable">
+<!-- <div id="mainTable">
 <table>
 	<tr>
 	<td class="reviews">
@@ -25,7 +25,7 @@
 	<tr>
 	<td class="reviews">
 		<table id="gulte_reviews">
-			<caption>Gulte.com</caption>
+			<caption>Gulte</caption>
 			<tbody>
 			<% @gt_reviews.each do |link| %>
 				<tr><td><a href="<%= link['href']%>" target="_blank"><%= link['text']%></a></td></tr>
@@ -37,3 +37,41 @@
 	</tr>
 </table>
 </div>
+-->
+
+<div id="main-table">
+	<div class="row">
+		<div class="col-md-4 col-sm-4 box">
+			<div class="review-box">
+				<h2>Great Andhra</h2>
+				<ul class="list-unstyled">
+					<% @ga_reviews.each do |l| %>
+					<li><a href="<%= l['href']%>" target="_blank"><%= l['text']%></a></li>
+					<% end %>
+				</ul>
+			</div>
+		</div>
+		<div class="col-md-4 col-sm-4">
+			<div class="review-box">	
+				<h2>Idlebrain</h2>
+				<ul class="list-unstyled">
+					<% @ib_reviews.each do |l| %>
+					<li><a href="<%= l['href']%>" target="_blank"><%= l['text']%></a></li>
+					<% end %>
+				</ul>
+			</div>
+		</div>
+		<div class="col-md-4 col-sm-4">
+			<div class="review-box">
+				<h2>Gulte.com</h2>
+				<ul class="list-unstyled">
+					<% @gt_reviews.each do |l| %>
+					<li><a href="<%= l['href']%>" target="_blank"><%= l['text']%></a></li>
+					<% end %>
+				</ul>
+			</div>
+		</div>
+		<!-- Add the extra clearfix for only the required viewport -->
+	</div>
+</div>
+

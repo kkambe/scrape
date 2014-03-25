@@ -1,11 +1,21 @@
+<script type="text/javascript">
+	$(document).ready(function() {
+		/*url = document.URL;
+	    $("header nav a").click(function() {
+			$("header nav a.active").removeClass("active");
+			$(this).addClass("active");
+		});*/
+	});
+  </script>
+  
 <header id="header" class="navbar navbar-fixed-top navbar-inverse">
 	<div class="container">
 		<!-- <div class="navbar navbar-inverse"> -->
 		<%= link_to "Movie Reviews", root_path, id: "logo" %> 	
 		<nav>
 			<ul class="nav nav-pills pull-right">
-				<li><%= link_to "Home",    root_path %></li>
-      			<li><%= link_to "Contact us",    contact_path %></li>
+				<li><%= link_to "Home", root_path, :id => "home_link" %></li>
+      			<li><%= link_to "Contact us", contact_path, :id => "contact_link" %></li>
 			</ul>	
 		</nav>
 	</div>

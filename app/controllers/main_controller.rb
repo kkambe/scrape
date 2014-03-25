@@ -4,28 +4,22 @@ require 'open-uri'
 class MainController < ApplicationController
   def scrape
     threads = []
-    
     threads << Thread.new do
       @ga_reviews = fetch_site_data("http://www.greatandhra.com/reviews.php", "div.movies_page_news a") 
     end
-    
     threads << Thread.new do
       @ib_reviews = fetch_site_data("http://idlebrain.com/movie/archive/index.html", 
                                     "html body table tr td table tr td table tr td table a", 
                                     "http://idlebrain.com/movie/archive/")      
     end
-    
     threads << Thread.new do
       @gt_reviews = fetch_site_data("http://www.gulte.com/moviereviews", 
                                     "html body div.wrapper div.main div.container ul.list_more li a")        
     end
-    
     threads.each(&:join)
-    
   end
   
   def contact
-    
   end
   
   private
