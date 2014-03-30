@@ -4,7 +4,8 @@
 
 $grayMediumLight: #eaeaea;
 $lightBlue: #1AD1F6;
-$themeColor: hsla(200, 82%, 22%, 1);
+$themeColor: hsla(200, 82%, 22%, 0.6);
+$themeColorFullOpace: hsla(200, 82%, 22%, 1);
 $hoverBackgroundColor: #0A3066;
 
 
@@ -20,7 +21,10 @@ body {
   background-color: #fff;
   font-size: 1.7em;
   // background: image-url("reel2.jpg");
-  background: image-url("reel.jpg");
+  background: image-url("3d.jpg");
+  // background: image-url("film.jpg");
+  // background: image-url("film2.jpg");
+  // background: image-url("reel.jpg");
   // background: image-url("film3.jpg");
   background-size: cover;
   background-repeat: no-repeat;
@@ -223,10 +227,13 @@ footer {
   
   a {
     color: #fff;
-    padding-left: 25px;
+    padding: 0 25px;
     display: block;
     line-height: 1.8em;
-     
+    
+    strong {
+      color: hsla(90, 70%, 50%, 1);
+    }
   }
   
   a:hover, a:focus {
@@ -239,9 +246,17 @@ footer {
     font-weight: bold;
   }
   
+  li {
+    line-height: 1.6em;
+  }
+  
   li > a:hover {
     background-color: $hoverBackgroundColor;
   }
+}
+
+.review-box:hover {
+  background-color: $themeColorFullOpace;
 }
 
 #main-table {

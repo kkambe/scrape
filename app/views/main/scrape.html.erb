@@ -46,7 +46,9 @@
 				<h2>Great Andhra</h2>
 				<ul class="list-unstyled">
 					<% @ga_reviews.each do |l| %>
-					<li><a href="<%= l['href']%>" target="_blank"><%= l['text']%></a></li>
+					<li><a href="<%= l['href']%>" target="_blank"><%= l['text']%> 
+						<strong class="pull-right"><%= l['rating']%></strong></a>
+					</li>
 					<% end %>
 				</ul>
 			</div>
@@ -56,7 +58,9 @@
 				<h2>Idlebrain</h2>
 				<ul class="list-unstyled">
 					<% @ib_reviews.each do |l| %>
-					<li><a href="<%= l['href']%>" target="_blank"><%= l['text']%></a></li>
+					<li><a href="<%= l['href']%>" target="_blank"><%= l['text']%> 
+						<strong class="pull-right"><%= l['rating']%></strong></a>
+					</li>
 					<% end %>
 				</ul>
 			</div>
@@ -66,7 +70,9 @@
 				<h2>Gulte.com</h2>
 				<ul class="list-unstyled">
 					<% @gt_reviews.each do |l| %>
-					<li><a href="<%= l['href']%>" target="_blank"><%= l['text']%></a></li>
+					<li><a href="<%= l['href']%>" target="_blank"><%= l['text']%> 
+						<strong class="pull-right"><%= l['rating']%></strong></a>
+					</li>
 					<% end %>
 				</ul>
 			</div>
