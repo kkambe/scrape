@@ -26,7 +26,7 @@ group :assets do
 end
 
 gem 'jquery-rails', '2.0.2'
-gem 'nokogiri'
+gem 'nokogiri', '1.6.1'
 gem 'mechanize'
 
 group :production do

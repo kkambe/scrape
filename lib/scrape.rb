@@ -1,3 +1,5 @@
+#!/usr/bin/ruby
+#
 require 'dalli'
 require 'mechanize'
 require 'open-uri'

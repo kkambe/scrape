@@ -66,7 +66,7 @@ GEM
       ntlm-http (~> 0.1, >= 0.1.1)
       webrobots (>= 0.0.9, < 0.2)
     mime-types (1.25.1)
-    mini_portile (0.5.2)
+    mini_portile (0.5.3)
     multi_json (1.9.0)
     net-http-digest_auth (1.4)
     net-http-persistent (2.9.4)
@@ -137,10 +137,13 @@ DEPENDENCIES
   dalli
   jquery-rails (= 2.0.2)
   mechanize
-  nokogiri
+  nokogiri (= 1.6.1)
   pg (= 0.12.2)
   rails (> 3.2.11)
   sass-rails (~> 3.2.3)
   sqlite3
   test-unit
   uglifier (>= 1.0.3)
+
+BUNDLED WITH
+   1.10.6
