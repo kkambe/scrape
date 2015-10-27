@@ -1,0 +1,76 @@
+/usr/local/rvm/rubies/ruby-2.0.0-p195/bin/ruby -r ./siteconf20151021-20066-1kwbnb0.rb extconf.rb
+checking for pg_config... yes
+Using config values from /bin/pg_config
+checking for libpq-fe.h... yes
+checking for libpq/libpq-fs.h... yes
+checking for PQconnectdb() in -lpq... yes
+checking for PQconnectionUsedPassword()... yes
+checking for PQisthreadsafe()... yes
+checking for PQprepare()... yes
+checking for PQexecParams()... yes
+checking for PQescapeString()... yes
+checking for PQescapeStringConn()... yes
+checking for PQgetCancel()... yes
+checking for lo_create()... yes
+checking for pg_encoding_to_char()... yes
+checking for PQsetClientEncoding()... yes
+checking for rb_encdb_alias()... yes
+checking for rb_enc_alias()... no
+checking for struct pgNotify.extra in libpq-fe.h... yes
+checking for unistd.h... yes
+checking for ruby/st.h... yes
+creating extconf.h
+creating Makefile
+
+make "DESTDIR=" clean
+
+make "DESTDIR="
+compiling compat.c
+compiling pg.c
+pg.c: In function 'pgresult_check':
+pg.c:142:2: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+  rb_encoding *enc = pgconn_get_client_encoding_as_rb_encoding(conn);
+  ^
+pg.c: In function 'pgconn_wait_for_notify':
+pg.c:2117:3: warning: 'rb_thread_select' is deprecated (declared at /usr/local/rvm/rubies/ruby-2.0.0-p195/include/ruby-2.0.0/ruby/intern.h:412) [-Wdeprecated-declarations]
+   ret = rb_thread_select( sd+1, &sd_rset, NULL, NULL, ptimeout );
+   ^
+pg.c: In function 'pgconn_block':
+pg.c:2598:3: warning: 'rb_thread_select' is deprecated (declared at /usr/local/rvm/rubies/ruby-2.0.0-p195/include/ruby-2.0.0/ruby/intern.h:412) [-Wdeprecated-declarations]
+   if ( (ret = rb_thread_select( sd+1, &sd_rset, NULL, NULL, ptimeout )) < 0 )
+   ^
+pg.c: In function 'pgconn_locreate':
+pg.c:2866:11: warning: variable 'lo_oid' set but not used [-Wunused-but-set-variable]
+  Oid ret, lo_oid;
+           ^
+pg.c: In function 'find_or_create_johab':
+pg.c:3940:16: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+  for (i = 0; i < sizeof(aliases)/sizeof(aliases[0]); ++i) {
+                ^
+pg.c:3946:16: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+  for (i = 1; i < sizeof(aliases)/sizeof(aliases[0]); ++i) {
+                ^
+pg.c:3947:3: warning: implicit declaration of function 'rb_encdb_alias' [-Wimplicit-function-declaration]
+   ENC_ALIAS(aliases[i], aliases[0]);
+   ^
+pg.c: In function 'pgconn_get_client_encoding_as_rb_encoding':
+pg.c:3974:17: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+   for (i = 0; i < sizeof(enc_pg2ruby_mapping)/sizeof(enc_pg2ruby_mapping[0]); ++i) {
+                 ^
+pg.c: In function 'pgconn_get_rb_encoding_as_pg_encname':
+pg.c:4006:16: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+  for (i = 0; i < sizeof(enc_pg2ruby_mapping)/sizeof(enc_pg2ruby_mapping[0]); ++i) {
+                ^
+pg.c: In function 'pgconn_internal_encoding_set':
+pg.c:4065:17: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+   for (i = 0; i < sizeof(enc_pg2ruby_mapping)/sizeof(enc_pg2ruby_mapping[0]); ++i) {
+                 ^
+pg.c: In function 'pgconn_external_encoding':
+pg.c:4121:17: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+   for (i = 0; i < sizeof(enc_pg2ruby_mapping)/sizeof(enc_pg2ruby_mapping[0]); ++i) {
+                 ^
+linking shared-object pg_ext.so
+
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 pg_ext.so ./.gem.20151021-20066-53otzh
+installing default pg_ext libraries
