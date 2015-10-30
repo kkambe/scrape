@@ -1,0 +1,14 @@
+/usr/local/rvm/rubies/ruby-2.0.0-p195/bin/ruby -r ./siteconf20151021-20066-lkwri6.rb extconf.rb
+checking for main() in -lstdc++... yes
+checking for ruby/encoding.h... yes
+creating Makefile
+
+make "DESTDIR=" clean
+
+make "DESTDIR="
+compiling unf.cc
+linking shared-object unf_ext.so
+
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 unf_ext.so ./.gem.20151021-20066-10jrrc3
+installing default unf_ext libraries
