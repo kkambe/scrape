@@ -3,7 +3,7 @@
     <% @site_reviews["telugu"].each do |site, review_det|  %>
             <div class="col-md-4 col-sm-4 box">
                     <div class="review-box">
-                            <h2>Great Andhra</h2>
+                      <h2><%= APP_CONFIG[ "telugu" ][ site ] %></h2>
                             <ul class="list-unstyled">
                                     <% review_det.each do |l| %>
                                     <li><a href="<%= l['href']%>" target="_blank"><%= l['text']%> 

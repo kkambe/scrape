@@ -1,34 +1,25 @@
 #!/usr/bin/ruby
-#
+
 require 'dalli'
 require 'mechanize'
 require 'open-uri'
+require 'yaml'
+require 'json'
 require_relative 'scrape_detail'
 
 class Scrape
 
-  @@site_map = {
-    "telugu" => {
-      "ga" => ScrapeDetail.new("http://www.greatandhra.com/reviews.php", "div.movies_page_news a", "",
-                                    "html body div.content p strong span"),
-      "ib" => ScrapeDetail.new("http://idlebrain.com/movie/archive/index.html", 
-                                    "html body table tr td table tr td table tr td table a", 
-                                    "http://idlebrain.com/movie/archive/", 
-                                    "html body table tbody tr td p font b font"),
-      "gt" => ScrapeDetail.new("http://www.gulte.com/moviereviews", 
-                                    "html body div.wrapper div.main div.container ul.list_more li a", "", 
-                                    "html body .rating span")                              
-    }  
-  }
+  RAILS_ROOT = "#{File.dirname(__FILE__)}/.."
+  @@site_hash = {}
 
   attr_accessor :dalli_client
 
   def scrape
-    @@site_map.each do |lang, l_map|
+    @@site_hash.each do |lang, l_map|
       puts "Language: #{lang}"
       l_map.each do |site, s_detail|
         puts "Site: #{site}"
-        review_details = fetch_site_data(s_detail.url, s_detail.css_path, s_detail.base_url, s_detail.rating_css_path)
+        review_details = fetch_site_data(s_detail["url"], s_detail["css_path"], s_detail["base_url"], s_detail["rating_css_path"])
         @dalli_client.set("#{lang}_#{site}", review_details);
       end
     end
@@ -66,6 +57,16 @@ class Scrape
     rating
   end
 
+  def load_json
+    properties = YAML.load_file( "#{RAILS_ROOT}/config/config.yml" )
+    puts "PROPERTIES: #{properties.inspect}"
+    properties[ "languages" ].each do | l |
+      json_file = File.read( "#{RAILS_ROOT}/config/#{l}.json" )
+      @@site_hash[ l ] = JSON.parse( json_file )
+    end
+    puts "@@SITE_HASH: #{@@site_hash.inspect}"
+  end
+
   # TODO: For each language and for each website 
   #       1) fetch the ratings of latest 5 movies 
   #       2) save them in memcached.
@@ -73,6 +74,7 @@ class Scrape
   def initialize
     options = {:namespace => 'scrape'} 
     @dalli_client = Dalli::Client.new('localhost:11211', options)
+    load_json
   end
 
   Scrape.new.scrape

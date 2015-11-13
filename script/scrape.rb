@@ -4,7 +4,7 @@ require 'open-uri'
 require_relative 'scrape_detail'
 
 # For each language and for each website 
-#       1) fetch the ratings of latest 5 movies 
+#       1) fetch the ratings of the latest 5 movies 
 #       2) save them in memcached.
 
 class Scrape
