@@ -1,5 +1,6 @@
 require 'mechanize'
 require 'open-uri'
+require_dependency 'movie_review'
 
 ######## Reference: http://ruby.bastardsbook.com/chapters/mechanize/
 

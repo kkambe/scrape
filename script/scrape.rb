@@ -1,7 +1,10 @@
 require 'dalli'
 require 'mechanize'
 require 'open-uri'
+require 'yaml'
 require_relative 'scrape_detail'
+require_relative 'movie_review'
+
 
 # For each language and for each website 
 #       1) fetch the ratings of the latest 5 movies 
@@ -27,6 +30,8 @@ class Scrape
 
   attr_accessor :dalli_client
 
+  SCRAPE_CONFIG = YAML.load_file( "scrape_config.yml" ) 
+
   def scrape
     @@site_map.each do |lang, l_map|
       puts "Language: #{lang}"
@@ -34,6 +39,19 @@ class Scrape
         puts "Site: #{site}"
         review_details = fetch_site_data(s_detail.url, s_detail.css_path, s_detail.base_url, s_detail.rating_css_path)
         @dalli_client.set("#{lang}_#{site}", review_details);
+      end
+    end
+  end
+
+  def scrape1
+    langs = SCRAPE_CONFIG[ 'languages' ]
+    langs.each do | lang |
+      l_det = SCRAPE_CONFIG[ lang ]
+      puts l_det.keys
+      l_det.each do | w, w_det |
+        puts "#{w}  #{w_det}"
+        review_details = fetch_site_data( w_det[ "url" ], w_det[ "css_path" ], w_det[ "base_url" ], w_det[ "rating_css_path" ] )
+        @dalli_client.set("#{lang}_#{w}", review_details);
       end
     end
   end
@@ -51,6 +69,23 @@ class Scrape
       l_map['text'] = link.text
       l_map['rating'] = get_rating(l_map['href'], rating_css_path)
       reviews << l_map
+    end
+    reviews
+  end
+
+  def fetch_site_data1( url, css_path, base_url, rating_css_path )
+    reviews = []
+    page = Mechanize.new.get( url )
+    reviews_count = 0
+    page.parser.css( css_path ).each do | link |
+      break if reviews_count == @@limit
+      reviews_count += 1
+      l_map = {}
+      rev_url = base_url + link[ 'href' ]
+      title = link.text
+      rating = get_rating( rev_url, rating_css_path )
+      movie_review = MovieReview.new( rev_url, title, rating )
+      reviews << movie_review
     end
     reviews
   end

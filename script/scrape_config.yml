@@ -18,3 +18,4 @@ telugu:
     css_path:  "html body div.wrapper div.main div.container ul.list_more li a"
     base_url: ""
     rating_css_path:  "html body .rating span"
+

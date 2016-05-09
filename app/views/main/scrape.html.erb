@@ -1,20 +1,36 @@
-<div id="main-table">
-  <div class="row">
-    <% @site_reviews["telugu"].each do |site, review_det|  %>
-            <div class="col-md-4 col-sm-4 box">
-                    <div class="review-box">
-                      <h2><%= APP_CONFIG[ "telugu" ][ site ] %></h2>
-                            <ul class="list-unstyled">
-                                    <% review_det.each do |l| %>
-                                    <li><a href="<%= l['href']%>" target="_blank"><%= l['text']%> 
-                                            <strong class="pull-right"><%= l['rating']%></strong></a>
-                                    </li>
-                                    <% end %>
-                            </ul>
-                    </div>
-            </div>
-            <!-- Add the extra clearfix for only the required viewport -->
-    <% end %>       
+<div class="tabbable">
+  
+<ul id="tabs" class="tab-content" data-tabs="tabs">
+  <li class="active"><a href="#telugu" data-toggle="tab">Telugu</a></li>
+  <li><a href="#hindi" data-toggle="tab">Hindi</a></li>
+</ul>
+<div id="my-tab-content" class="tab-content">
+  <div class="tab-pane active" id="telugu">
+    <div class="main-table">
+      <div class="row">
+        <% @site_reviews["telugu"].each do | site, reviews |  %>
+                <div class="col-md-4 col-sm-4 box">
+                        <div class="review-box">
+                          <h2><%= APP_CONFIG[ "telugu" ][ site ] %></h2>
+                                <ul class="list-unstyled">
+                                        <% reviews.each do | movie_review | %>
+                                        <li><a href="<%= movie_review.url %>" target="_blank"><%= movie_review.title %> 
+                                                <strong class="pull-right"><%= movie_review.rating %></strong></a>
+                                        </li>
+                                        <% end %>
+                                </ul>
+                        </div>
+                </div>
+                <!-- Add the extra clearfix for only the required viewport -->
+        <% end %>       
+      </div>
+    </div>
+  </div>
+  <div class="tab-pane" id="hindi">
+    Hindi movie reviews to come here!
   </div>
 </div>
+</div>
+
+
 
