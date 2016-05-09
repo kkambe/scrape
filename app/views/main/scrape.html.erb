@@ -11,7 +11,7 @@
         <% @site_reviews["telugu"].each do | site, reviews |  %>
                 <div class="col-md-4 col-sm-4 box">
                         <div class="review-box">
-                          <h2><%= APP_CONFIG[ "telugu" ][ site ] %></h2>
+                          <h2><%= APP_CONFIG[ "telugu" ][ site ][ "name" ] %></h2>
                                 <ul class="list-unstyled">
                                         <% reviews.each do | movie_review | %>
                                         <li><a href="<%= movie_review.url %>" target="_blank"><%= movie_review.title %> 
