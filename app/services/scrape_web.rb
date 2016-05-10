@@ -16,9 +16,7 @@ class ScrapeWeb
     langs = APP_CONFIG[ 'languages' ]
     langs.each do | lang |
       l_det = APP_CONFIG[ lang ]
-      puts l_det.keys
       l_det.each do | w, w_det |
-        puts "#{w}  #{w_det}"
         review_details = fetch_site_data( w_det[ "url" ], w_det[ "css_path" ], w_det[ "base_url" ], w_det[ "rating_css_path" ] )
         @dalli_client.set("#{lang}_#{w}", review_details);
       end
@@ -47,12 +45,12 @@ class ScrapeWeb
     begin
       page = Mechanize.new.get(url)
       res = page.parser.css(rating_css_path)[0]
-      puts "URL======== " + url.inspect
-      puts "CSS PATH======== " + rating_css_path.inspect
-      puts "RESULT======== " + res.inspect
+      Rails.logger.debug "URL======== " + url.inspect
+      Rails.logger.debug "CSS PATH======== " + rating_css_path.inspect
+      Rails.logger.debug "RESULT======== " + res.inspect
       rating = res.text
     rescue Exception => e
-      puts "Exception while retrieving rating::: " + e.backtrace.inspect        
+      Rails.logger.error "Exception while retrieving rating::: " + e.backtrace.inspect        
     end
     rating
   end

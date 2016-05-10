@@ -15,6 +15,7 @@ class MainController < ApplicationController
         @site_reviews[ lang ][ site ] = Rails.cache.fetch( "#{lang}_#{site}" )
       end
     end
+    logger.debug "SITE REVIEWS::: #{@site_reviews.inspect}"
   end
   
   def contact
