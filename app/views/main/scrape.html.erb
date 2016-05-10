@@ -14,7 +14,7 @@
                           <h2><%= APP_CONFIG[ "telugu" ][ site ][ "name" ] %></h2>
                                 <ul class="list-unstyled">
                                         <% reviews.each do | movie_review | %>
-                                        <li><a href="<%= movie_review.url %>" target="_blank"><%= movie_review.title %> 
+                                          <li><a href="<%= movie_review.url %>" target="_blank" title="<%= movie_review.title %>"><%=h truncate( movie_review.title, :length => 25 ) %> 
                                                 <strong class="pull-right"><%= movie_review.rating %></strong></a>
                                         </li>
                                         <% end %>
