@@ -1,11 +1,11 @@
 <div class="tabbable">
   
-<ul id="tabs" class="tab-content" data-tabs="tabs">
+<ul class="nav nav-tabs">
   <li class="active"><a href="#telugu" data-toggle="tab">Telugu</a></li>
   <li><a href="#hindi" data-toggle="tab">Hindi</a></li>
 </ul>
-<div id="my-tab-content" class="tab-content">
-  <div class="tab-pane active" id="telugu">
+<div class="tab-content">
+  <div class="tab-pane fade in active" id="telugu">
     <div class="main-table">
       <div class="row">
         <% @site_reviews["telugu"].each do | site, reviews |  %>
@@ -26,7 +26,7 @@
       </div>
     </div>
   </div>
-  <div class="tab-pane" id="hindi">
+  <div class="tab-pane fade" id="hindi">
     Hindi movie reviews to come here!
   </div>
 </div>
