@@ -27,7 +27,25 @@
     </div>
   </div>
   <div class="tab-pane fade" id="hindi">
-    Hindi movie reviews to come here!
+    <div class="main-table">
+      <div class="row">
+        <% @site_reviews["hindi"].each do | site, reviews |  %>
+                <div class="col-md-4 col-sm-4 box">
+                        <div class="review-box">
+                          <h2><%= APP_CONFIG[ "hindi" ][ site ][ "name" ] %></h2>
+                                <ul class="list-unstyled">
+                                        <% reviews.each do | movie_review | %>
+                                          <li><a href="<%= movie_review.url %>" target="_blank" title="<%= movie_review.title %>"><%=h truncate( movie_review.title, :length => 25 ) %> 
+                                                <strong class="pull-right"><%= movie_review.rating %></strong></a>
+                                        </li>
+                                        <% end %>
+                                </ul>
+                        </div>
+                </div>
+                <!-- Add the extra clearfix for only the required viewport -->
+        <% end %>       
+      </div>
+    </div>
   </div>
 </div>
 </div>

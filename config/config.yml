@@ -1,4 +1,4 @@
-languages: ['telugu']
+languages: [ 'telugu', 'hindi' ]
 telugu:
   ga: 
     name: 'Great Andhra'
@@ -18,3 +18,22 @@ telugu:
     css_path:  "html body div.wrapper div.main div.container ul.list_more li a"
     base_url: ""
     rating_css_path:  "html body .rating span"
+hindi:
+  toi:
+    name: 'Times of India'
+    url: 'http://timesofindia.indiatimes.com/entertainment/hindi/movie-reviews'
+    css_path: 'div#articlenew .mr_listing_brd .mr_listing_right a'
+    base_url: 'http://timesofindia.indiatimes.com/'
+    rating_css_path: '.ratingMovie'
+  bh:
+    name: 'Bollywood Hungama'
+    url: 'http://www.bollywoodhungama.com/movies/reviews'
+    css_path: '.mwidth560 .movlstrgt h2 a'
+    base_url: 'http://www.bollywoodhungama.com/'
+    rating_css_path: 'div#celeb_article_postview_tab span[itemprop=ratingValue]'
+  ndtv:
+    name: 'NDTV'
+    url: 'http://movies.ndtv.com/movie-reviews/bollywood'
+    css_path: '.ndmv-review-title a'
+    base_url: ''
+    rating_css_path: '.ndmv-review-breadcrumb-rating .rating'
