@@ -29,13 +29,15 @@ class ScrapeWeb
     reviews_count = 0
     page.parser.css( css_path ).each do | link |
       break if reviews_count == @limit
-      reviews_count += 1
       l_map = {}
       rev_url = base_url + link[ 'href' ]
-      title = link.text
       rating = get_rating( rev_url, rating_css_path )
-      movie_review = MovieReview.new( rev_url, title, rating )
-      reviews << movie_review
+      if rating != "N/A"
+        title = get_processed_title link.text
+        movie_review = MovieReview.new( rev_url, title, rating )
+        reviews << movie_review
+        reviews_count += 1
+      end
     end
     reviews
   end
@@ -48,11 +50,19 @@ class ScrapeWeb
       Rails.logger.debug "URL======== " + url.inspect
       Rails.logger.debug "CSS PATH======== " + rating_css_path.inspect
       Rails.logger.debug "RESULT======== " + res.inspect
-      rating = res.text
+      rating = extract_rating_from_text res.text
     rescue Exception => e
       Rails.logger.error "Exception while retrieving rating::: " + e.backtrace.inspect        
     end
     rating
+  end
+
+  def extract_rating_from_text txt
+    txt.strip.split("/")[0].strip.split(" ")[-1]
+  end
+
+  def get_processed_title title
+    title.gsub( /review/i, '' )
   end
 
 end

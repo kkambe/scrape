@@ -1,7 +1,11 @@
 <div class="main-table">
-  <div class="row">
-    <% @site_reviews[ lang ].each do | site, reviews |  %>
-        <div class="col-md-4 col-sm-4 box">
+  <% i = 0 %>
+  <% size = @site_reviews[ lang ].size %>
+  <% @site_reviews[ lang ].each do | site, reviews |  %>
+    <% if i % 3 == 0 %>
+      <div class="row">
+    <% end %>    
+        <div class="col-md-4 col-sm-4 col-lg-4 box">
           <div class="review-box">
             <h2><%= APP_CONFIG[ lang ][ site ][ "name" ] %></h2>
                 <ul class="list-unstyled">
@@ -14,6 +18,9 @@
           </div>
         </div>
         <!-- Add the extra clearfix for only the required viewport -->
-    <% end %>       
-  </div>
+    <% if i % 3 == 2 || i == size - 1 %>    
+      </div>
+    <% end %>
+    <% i += 1 %>    
+  <% end %>       
 </div>
