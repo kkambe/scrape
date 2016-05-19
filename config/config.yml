@@ -24,6 +24,24 @@ telugu:
     css_path:  ".article-rel-wrapper a"
     base_url: ""
     rating_css_path:  ".post-content p span strong"
+  toi:
+    name: 'Times of India'
+    url: 'http://timesofindia.indiatimes.com/entertainment/telugu/movie-reviews'
+    css_path: 'div#articlenew .mr_listing_brd .mr_listing_right a'
+    base_url: 'http://timesofindia.indiatimes.com/'
+    rating_css_path: '.ratingMovie'
+  ig:
+    name: 'IndiaGlitz'
+    url: 'http://www.indiaglitz.com/telugu-movie-reviews'
+    css_path: 'table tr td table tr td a h1 a'
+    base_url: ''
+    rating_css_path: 'table div table div h3'
+  tm:
+    name: 'Telugu Mirchi'
+    url: 'http://www.telugumirchi.com/en/reviews'
+    css_path: '.post h2 a'
+    base_url: ''
+    rating_css_path: '.post-entry p b span'    
 hindi:
   toi:
     name: 'Times of India'

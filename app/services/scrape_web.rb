@@ -62,7 +62,7 @@ class ScrapeWeb
   end
 
   def get_processed_title title
-    title.gsub( /review/i, '' )
+    title.gsub( /review/i, '' ).strip.gsub(/^:/i, '').strip.split(' ').join(' ')
   end
 
 end
