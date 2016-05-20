@@ -2,25 +2,27 @@
   <% i = 0 %>
   <% size = @site_reviews[ lang ].size %>
   <% @site_reviews[ lang ].each do | site, reviews |  %>
-    <% if i % 3 == 0 %>
-      <div class="row">
-    <% end %>    
-        <div class="col-md-4 col-sm-4 col-lg-4 box">
-          <div class="review-box">
-            <h2><%= APP_CONFIG[ lang ][ site ][ "name" ] %></h2>
-                <ul class="list-unstyled">
-                        <% reviews.each do | movie_review | %>
-                          <li><a href="<%= movie_review.url %>" target="_blank" title="<%= movie_review.title %>"><%=h truncate( movie_review.title, :length => 25 ) %> 
-                                <strong class="pull-right"><%= movie_review.rating %></strong></a>
-                        </li>
-                        <% end %>
-                </ul>
+    <% if reviews && reviews.size > 0 %>
+      <% if i % 3 == 0 %>
+        <div class="row">
+      <% end %>    
+          <div class="col-md-4 col-sm-4 col-lg-4 box">
+            <div class="review-box">
+              <h2><%= APP_CONFIG[ lang ][ site ][ "name" ] %></h2>
+                  <ul class="list-unstyled">
+                          <% reviews.each do | movie_review | %>
+                            <li><a href="<%= movie_review.url %>" target="_blank" title="<%= movie_review.title %>"><%=h truncate( movie_review.title, :length => 25 ) %> 
+                                  <strong class="pull-right"><%= movie_review.rating %></strong></a>
+                          </li>
+                          <% end %>
+                  </ul>
+            </div>
           </div>
+          <!-- Add the extra clearfix for only the required viewport -->
+      <% if i % 3 == 2 || i == size - 1 %>    
         </div>
-        <!-- Add the extra clearfix for only the required viewport -->
-    <% if i % 3 == 2 || i == size - 1 %>    
-      </div>
-    <% end %>
-    <% i += 1 %>    
+      <% end %>
+      <% i += 1 %>
+    <% end %>    
   <% end %>       
 </div>

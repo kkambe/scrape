@@ -4,6 +4,7 @@ class ScrapeWeb
     options = {:namespace => 'scrape'} 
     @dalli_client = Dalli::Client.new('localhost:11211', options)
     @limit = 5
+    @invalid_rating = "N/A"
   end
 
   def update_ratings
@@ -32,7 +33,7 @@ class ScrapeWeb
       l_map = {}
       rev_url = base_url + link[ 'href' ]
       rating = get_rating( rev_url, rating_css_path )
-      if rating != "N/A"
+      if rating != @invalid_rating
         title = get_processed_title link.text
         movie_review = MovieReview.new( rev_url, title, rating )
         reviews << movie_review
@@ -43,7 +44,7 @@ class ScrapeWeb
   end
 
   def get_rating(url, rating_css_path)
-    rating = "N/A"
+    rating = @invalid_rating
     begin
       page = Mechanize.new.get(url)
       res = page.parser.css(rating_css_path)[0]
@@ -58,7 +59,16 @@ class ScrapeWeb
   end
 
   def extract_rating_from_text txt
-    txt.strip.split("/")[0].strip.split(" ")[-1]
+    rating = txt.strip.split("/")[0].strip.split(" ")[-1]
+    if is_valid_rating rating
+      rating
+    else
+      @invalid_rating
+    end
+  end
+
+  def is_valid_rating rating
+    true if Float( rating ) rescue false
   end
 
   def get_processed_title title

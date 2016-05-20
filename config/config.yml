@@ -42,6 +42,24 @@ telugu:
     css_path: '.post h2 a'
     base_url: ''
     rating_css_path: '.post-entry p b span'    
+  ilc:
+    name: 'I Luv Cinema'
+    url: 'http://www.iluvcinema.in/telugu/reviews/movie-reviews/'
+    css_path: '.cat_post .post-desc a'
+    base_url: ''
+    rating_css_path: 'div.entry-content-wrap span.entry-content h2 strong' 
+  ah:
+    name: 'Andhra Headlines'
+    url: 'http://www.andhraheadlines.com/movies/reviews/'
+    css_path: 'td.tabletitle a'
+    base_url: 'http://www.andhraheadlines.com/'
+    rating_css_path: 'span.ArticleText span span'
+  sify:
+    name: 'Sify Movies'
+    url: 'http://www.sify.com/movies/reviews/category/telugu/'
+    css_path: 'div.category-heading-wrapper a'
+    base_url: ''
+    rating_css_path: 'div.mreview-article-content-wrapper div p b'
 hindi:
   toi:
     name: 'Times of India'
