@@ -59,7 +59,7 @@ class ScrapeWeb
   end
 
   def extract_rating_from_text txt
-    rating = txt.strip.split("/")[0].strip.split(" ")[-1]
+    rating = txt.strip.split("/")[0].strip.split(" ")[-1].gsub(/-/i, '')
     if is_valid_rating rating
       rating
     else
