@@ -30,6 +30,12 @@ telugu:
     css_path:  "section#content div.item h3 a"
     base_url: ""
     rating_css_path:  "section#content h2 span"
+  tpc:
+    name: 'Tollywood Popcorn'
+    url: "http://tollywoodpopcorn.com/category/reviews/"
+    css_path:  "div.item_content h4 a"
+    base_url: ""
+    rating_css_path:  "div.review-total-wrapper span"
   toi:
     name: 'Times of India'
     url: 'http://timesofindia.indiatimes.com/entertainment/telugu/movie-reviews'
