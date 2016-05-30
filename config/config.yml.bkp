@@ -1,9 +1,0 @@
-#site_map:
-#  telugu: ['ga', 'ib', 'gt']
-languages: ['telugu']
-telugu:
-  ga: 'Great Andhra'
-  ib: 'Idle Brain'
-  gt: 'Gulte.com'    
-
-
