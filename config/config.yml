@@ -97,3 +97,21 @@ hindi:
     css_path: '.ndmv-review-title a'
     base_url: ''
     rating_css_path: '.ndmv-review-breadcrumb-rating .rating'
+  ig_h:
+    name: 'IndiaGlitz'
+    url: 'http://www.indiaglitz.com/hindi-movie-reviews'
+    css_path: 'table tr td table tr td a h1 a'
+    base_url: ''
+    rating_css_path: 'table div table div h3'
+  gs:
+    name: 'Glamsham'
+    url: 'http://www.glamsham.com/movies/reviews/'
+    css_path: 'div.container table tr td table tr td table tr td a.general'
+    base_url: 'http://www.glamsham.com/movies/reviews/'
+    rating_css_path: 'span[itemprop=ratingValue]'
+  rm:
+    name: 'Radio Mirchi'
+    url: 'http://www.radiomirchi.com/bollywood/moviereviews/'
+    css_path: 'span.maroon11B a'
+    base_url: 'http://www.radiomirchi.com/'
+    rating_css_path: 'div.OrngBx p span'
